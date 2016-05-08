@@ -63,7 +63,7 @@ namespace Ferhah.SyncNetObjects
         public static bool IsSimpleType(Type type)
         {
             return
-                type.IsPrimitive ||
+                type.GetTypeInfo().IsPrimitive ||
                 new Type[] {
             typeof(Enum),
             typeof(String),
@@ -72,9 +72,10 @@ namespace Ferhah.SyncNetObjects
             typeof(DateTimeOffset),
             typeof(TimeSpan),
             typeof(Guid)
-                }.Contains(type) ||
-                Convert.GetTypeCode(type) != TypeCode.Object ||
-                (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>) && IsSimpleType(type.GetGenericArguments()[0]))
+                }.Contains(type)
+                 ||
+                //Convert.GetTypeCode(type) != TypeCode.Object ||
+                (type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>) && IsSimpleType(type.GetTypeInfo().GenericTypeArguments[0]))
                 ;
         }
 

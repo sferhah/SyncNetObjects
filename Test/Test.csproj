@@ -123,14 +123,14 @@
     <Compile Include="SyncHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\SyncNetObjects\SyncNetObjects.csproj">
       <Project>{8316371b-6381-4ea0-99cc-333e41b43c4e}</Project>
       <Name>SyncNetObjects</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

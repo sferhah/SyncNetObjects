@@ -66,7 +66,8 @@ namespace Ferhah.SyncNetObjects
             foreach (var config in this.Configurations)
             {             
 
-                PropertyInfo containerProperty = typeof(T).GetProperties().Where(p => typeof(IEnumerable).IsAssignableFrom(p.PropertyType)
+                PropertyInfo containerProperty = typeof(T).GetTypeInfo().DeclaredProperties
+                                        .Where(p => typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(p.PropertyType.GetTypeInfo())
                                            && p.CanWrite
                                          && p.PropertyType.GenericTypeArguments.Any()
                                          && p.PropertyType.GenericTypeArguments.First() == config.GetGenericType())
