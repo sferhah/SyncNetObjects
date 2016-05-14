@@ -73,9 +73,9 @@ namespace Ferhah.SyncNetObjects
             typeof(TimeSpan),
             typeof(Guid)
                 }.Contains(type)
-                 ||
-                //Convert.GetTypeCode(type) != TypeCode.Object ||
-                (type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>) && IsSimpleType(type.GetTypeInfo().GenericTypeArguments[0]))
+                  || type.GetTypeInfo().IsEnum
+                //Convert.GetTypeCode(type) != TypeCode.Object 
+                || (type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>) && IsSimpleType(type.GetTypeInfo().GenericTypeArguments[0]))
                 ;
         }
 
